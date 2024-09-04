@@ -1,0 +1,13 @@
+services:
+  angular-project-generator:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      ANGULAR_VERSION: ${ANGULAR_VERSION} 
+    volumes:
+      # Mount home directory to Create project under home directory
+      # Attention: If you execute docker command by sudo, root user’s home directory will be mounted. 
+      - ${HOME:?err}:/workspace
+    tty: true
+    stdin_open: true
